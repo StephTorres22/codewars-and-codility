@@ -4,6 +4,7 @@ function findBeginningOfLoopIfNoDuplication(node) {
   const allNodes = [];
   let temp = node.next;
 
+  /* used a map to complete the challenge on code wars as .includes in an array isn't as performant as map.has() */
   while (temp) {
     if (!allNodes.includes(temp)) {
       allNodes.push(temp);
