@@ -45,7 +45,7 @@ export function permute(arr, start = 0, result = []) {
   return result;
 }
 
-console.log(nextSmaller(213));
+
 
 function transformArrToSingleDigit(arr) {
   let value = "";

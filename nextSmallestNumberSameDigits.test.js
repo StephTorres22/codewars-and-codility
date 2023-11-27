@@ -1,16 +1,24 @@
 import {describe, expect, it} from '@jest/globals';
 import { nextSmaller, permute } from './nextSmallestNumberSameDigits';
 
-describe('it should return expected result', () => {
+describe('nextSmaller() should return expected result', () => {
 
-    const input = '213';
-    const expected = 132;
-    const actual = nextSmaller(input);
-
-    it('should return expected...', () => {
-        expect(actual).toBe(expected);
+    it.each([
+        [213, 132],
+        [21, 12],
+        [907, 790],
+        [531, 513],
+        [135, -1],
+        [2071, 2017],
+        [1027, -1,],
+        [414, 144],
+        [123456798, 123456789],
+        [123456789, -1],
+        [1234567908, 1234567890]
+    ])
+    ('input %p, expects %p', (input, expected) => {
+        expect(nextSmaller(input)).toBe(expected);
     });
-
 });
 
 describe('permutations', () => {
