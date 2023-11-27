@@ -4,7 +4,7 @@ import { nextSmaller, permute } from './nextSmallestNumberSameDigits';
 describe('it should return expected result', () => {
 
     const input = '213';
-    const expected = 123;
+    const expected = 132;
     const actual = nextSmaller(input);
 
     it('should return expected...', () => {
