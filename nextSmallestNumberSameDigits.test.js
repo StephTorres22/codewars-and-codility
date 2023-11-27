@@ -1,5 +1,5 @@
 import {describe, expect, it} from '@jest/globals';
-import { nextSmaller, permute } from './nextSmallestNumberSameDigits';
+import {collapseArrayToNumber, convertNumberToArray, nextSmaller, permute} from './nextSmallestNumberSameDigits';
 
 describe('nextSmaller() should return expected result', () => {
 
@@ -42,12 +42,35 @@ describe('permutations', () => {
     it('should be equals', () => {
         expect(actual.toString()).toBe(expected.toString());
     });
+
+    it.each([213, 21, 907, 2071, 123456798, 1234567908])
+    ('input of %p', (input) => {
+        const a = convertNumberToArray(input);
+        permute(a);
+    });
+
 })
+
+describe('collapsing array to number', () => {
+
+    it.each(
+        [
+            [[1, 2], 12]
+        ]
+        )
+    ('input array of %p becomes %p', (array, expected) => {
+        const actual = collapseArrayToNumber(array);
+        expect(actual).toBe(expected);
+    });
+
+});
 
 /*
 * Want a test where we can analyse runtime performance.
 * permutate with arrays of 2, 4, 8, 16 and 32 elements.
 * */
+
+console.log(`10 factorial ${factorialise(10)}`);
 
 function factorialise(value) {
     var result = value
