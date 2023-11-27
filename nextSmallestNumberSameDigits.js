@@ -1,4 +1,4 @@
-function nextSmaller(num) {
+export function nextSmaller(num) {
   /* could take num, make an array create an array with values using the numbers in any order and return one below original number... */
   const arr = convertNumberToArray(num);
 
@@ -13,7 +13,7 @@ function nextSmaller(num) {
     numbersArr.push(transformArrToSingleDigit(combo));
   });
 
-  sortedArr = numbersArr.sort((a, b) => a - b);
+  const sortedArr = numbersArr.sort((a, b) => a - b);
 
   for (let i = 0; i < sortedArr.length; i++) {
     if (sortedArr[i] === num) {
@@ -26,9 +26,9 @@ function nextSmaller(num) {
       return sortedArr[i - 1];
     }
   }
-}
+};
 
-function permute(arr, start = 0, result = []) {
+export function permute(arr, start = 0, result = []) {
   if (start === arr.length - 1) {
     result.push([...arr]);
   }
@@ -62,7 +62,7 @@ function convertNumberToArray(num) {
 
 /* THIS SOLUTION PASSES TESTS, BUT FAILS ON SPEED. DO WE NEED TO GET EVERY PERMUTATION, OR IS THERE ANOTHER WAY? */
 
-/* maybe cycle backwards through the number. check if the last number is the smallest, if yes, switch, if not move on to the next 
+/* maybe cycle backwards through the number. check if the last number is the smallest, if yes, switch, if not move on to the next
  i.e tens, if 100's is smaller switch and so on.. double check both initial number and final number are teh same length */
 
 /* function messUpArr(arr) {
@@ -70,7 +70,7 @@ function convertNumberToArray(num) {
 
   const result = [];
 
-  
+
   for (let i = arr.length - 1; i <= 0; i--) {
     for (let j = arr.length - 2; j <= 0; j--) {
       if (arr[i] < arr[j]) {
@@ -85,5 +85,3 @@ function convertNumberToArray(num) {
   if (dup.every((num) => num > firstNumber)) {
   }
 } */
-
-
