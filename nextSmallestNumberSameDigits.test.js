@@ -27,10 +27,24 @@ describe('permutations', () => {
     ];
 
     it('should be of the same length', () => {
-        expect(actual.length).toBe(expected.length);
+        const expectedLength = factorialise(input.length);
+        expect(actual.length).toBe(expectedLength);
     });
 
     it('should be equals', () => {
         expect(actual.toString()).toBe(expected.toString());
     });
 })
+
+/*
+* Want a test where we can analyse runtime performance.
+* permutate with arrays of 2, 4, 8, 16 and 32 elements.
+* */
+
+function factorialise(value) {
+    var result = value
+    for (var i = (value - 1) ; i > 0; i--) {
+        result = result * i;
+    }
+    return result;
+}
