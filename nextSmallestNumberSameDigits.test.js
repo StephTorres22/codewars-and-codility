@@ -49,10 +49,34 @@ describe('permutations', () => {
 * permutate with arrays of 2, 4, 8, 16 and 32 elements.
 * */
 
-function factorialise(value) {
-    var result = value
-    for (var i = (value - 1) ; i > 0; i--) {
-        result = result * i;
+describe('factorial functions', () => {
+    function loop(value) {
+        var result = value
+        for (var i = (value - 1) ; i > 0; i--) {
+            result = result * i;
+        }
+        return result;
     }
-    return result;
-}
+
+    function recursive(value) {
+        if (value == 0) {
+            return 1;
+        }
+        return value * recursive(value - 1);
+    }
+
+    const casesWithFunction = [
+        [2, 2, loop, recursive],
+        [3, 6, loop, recursive],
+        [4, 24, loop, recursive],
+        [5, 120, loop, recursive]
+    ];
+
+    it.each(casesWithFunction)
+    ( `factorial of %p is %p`, (input, expected, fn1, fn2) => {
+            expect(fn1(input)).toBe(expected);
+            expect(fn2(input)).toBe(expected);
+            expect(fn1(input)).toBe(fn2(input));
+        }
+    );
+});
