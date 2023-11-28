@@ -14,7 +14,7 @@ export function nextSmaller(num) {
   forEach is slower than for loop*/
 
   for (let i = 0; i < combinations.length; i++) {
-    numbersArr.push(collapseArrayToNumber([i]));
+    numbersArr.push(transformArrToSingleDigit(combinations[i]));
   }
 
   const sortedArr = numbersArr.sort((a, b) => a - b);
@@ -27,7 +27,7 @@ export function nextSmaller(num) {
       if (sortedArr[i - 1][0] === "0") {
         return -1;
       }
-      return sortedArr[i - 1];
+      return Number(sortedArr[i - 1]);
     }
   }
 };
@@ -45,14 +45,7 @@ export function permute(arr, start = 0, result = []) {
   return result;
 }
 
-export function collapseArrayToNumber(array){
-  let value = '';
 
-  for (let i=0; i<array.length; i++){
-    value += array[i];
-  }
-  return Number(value);
-}
 
 function transformArrToSingleDigit(arr) {
   let value = "";
@@ -64,8 +57,9 @@ function transformArrToSingleDigit(arr) {
   return value;
 }
 
-export function convertNumberToArray(num) {
-  const arr = String(num).split("").map((char) => Number(char))
+function convertNumberToArray(num) {
+  const arr = String(num).split("");
+  // .map((char) => Number(char));
   return arr;
 }
 
@@ -150,3 +144,7 @@ function getSmaller(num) {
 
   return Number(result);
 }
+
+console.log(getSmaller(907));
+console.log(getSmaller(414));
+console.log(getSmaller(1234567908));
