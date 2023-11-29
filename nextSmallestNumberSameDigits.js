@@ -1,36 +1,13 @@
 export function nextSmaller(num) {
-  /* could take num, make an array create an array with values using the numbers in any order and return one below original number... */
-  const arr = convertNumberToArray(num);
-  const stringNum = transformArrToSingleDigit(arr);
 
-  const numbersArr = [];
-  const combinations = permute(arr);
+   const numberAsArray = convertNumberToArray(num);
 
-  /* Loop over each combination transform each digit to a string so can concatenate together then transfer back to number to sort. */
 
-  /* combinationsArr.forEach((combo) => {
-    numbersArr.push(transformArrToSingleDigit(combo));
-  });
-  forEach is slower than for loop*/
-
-  for (let i = 0; i < combinations.length; i++) {
-    numbersArr.push(transformArrToSingleDigit(combinations[i]));
-  }
-
-  const sortedArr = numbersArr.sort((a, b) => a - b);
-
-  for (let i = 0; i < sortedArr.length; i++) {
-    if (sortedArr[i] === stringNum) {
-      if (!sortedArr[i - 1]) {
-        return -1;
-      }
-      if (sortedArr[i - 1][0] === "0") {
-        return -1;
-      }
-      return Number(sortedArr[i - 1]);
-    }
-  }
 };
+
+export function findSplitPoint(numbers) {
+
+}
 
 export function permute(arr, start = 0, result = []) {
   if (start === arr.length - 1) {

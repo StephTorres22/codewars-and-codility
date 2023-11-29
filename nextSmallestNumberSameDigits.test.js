@@ -1,5 +1,5 @@
 import {describe, expect, it} from '@jest/globals';
-import { nextSmaller, permute } from './nextSmallestNumberSameDigits';
+import {findSplitPoint, nextSmaller, permute} from './nextSmallestNumberSameDigits';
 
 describe('nextSmaller() should return expected result', () => {
 
@@ -79,4 +79,18 @@ describe('factorial functions', () => {
             expect(fn1(input)).toBe(fn2(input));
         }
     );
+});
+
+describe('find split point', () => {
+
+    const cases = [
+        [[1, 2, 3, 4], 0],
+        [[4, 3, 2 , 1], 2],
+        [[5, 3, 6, 2, 1, 9], 3]
+    ];
+
+    it.each(cases)
+    (`%p has split point index of %p`, (input, expectedIndex) => {
+        expect(findSplitPoint(input)).toBe(expectedIndex);
+    })
 });
